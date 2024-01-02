@@ -1,0 +1,46 @@
+package com.nowgnodeel.gym.member.domain;
+
+import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Setter
+@ToString
+public class Member extends BaseTimeEntity {
+
+  @Column(nullable = false, unique = true)
+  private String username;
+
+  @Column(nullable = false)
+  private String password;
+
+  @Column(nullable = false)
+  private String nickname;
+
+  @Column(nullable = false)
+  private String birth;
+
+  @Column(nullable = false)
+  private String sex;
+
+  @Column(nullable = false)
+  private String phone;
+
+  @Column(nullable = false)
+  private String address;
+
+  @ToString.Exclude
+  @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+  private List<MemberCreditCard> memberCreditCards = new ArrayList<>();
+}
