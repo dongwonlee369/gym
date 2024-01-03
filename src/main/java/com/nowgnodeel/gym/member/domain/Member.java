@@ -1,7 +1,9 @@
 package com.nowgnodeel.gym.member.domain;
 
+import com.nowgnodeel.gym.cart.domain.Cart;
 import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
 import com.nowgnodeel.gym.global.domain.Sex;
+import com.nowgnodeel.gym.order.domain.Order;
 import com.nowgnodeel.gym.pt.domain.PT;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,4 +51,12 @@ public class Member extends BaseTimeEntity {
   @ToString.Exclude
   @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
   private List<PT> pts = new ArrayList<>();
+
+  @ToString.Exclude
+  @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+  private List<Order> orders = new ArrayList<>();
+
+  @ToString.Exclude
+  @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+  private List<Cart> carts = new ArrayList<>();
 }
