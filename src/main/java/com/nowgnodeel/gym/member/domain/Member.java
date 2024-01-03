@@ -1,6 +1,7 @@
 package com.nowgnodeel.gym.member.domain;
 
 import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
+import com.nowgnodeel.gym.global.domain.Sex;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,7 +33,7 @@ public class Member extends BaseTimeEntity {
   private String birth;
 
   @Column(nullable = false)
-  private String sex;
+  private Sex sex;
 
   @Column(nullable = false)
   private String phone;
