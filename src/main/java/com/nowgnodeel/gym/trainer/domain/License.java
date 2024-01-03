@@ -1,16 +1,18 @@
 package com.nowgnodeel.gym.trainer.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
+import jakarta.persistence.*;
 
 import lombok.*;
 
+@EqualsAndHashCode(callSuper = true)
 @Embeddable
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-public class License {
+public class License extends BaseTimeEntity {
 
   @Column(nullable = false)
   private String licenseName;
@@ -26,4 +28,9 @@ public class License {
 
   @Column(nullable = false)
   private String licenseExpireAt;
+
+  @ToString.Exclude
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Trainer trainer;
 }

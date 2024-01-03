@@ -2,9 +2,12 @@ package com.nowgnodeel.gym.trainer.domain;
 
 import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
 import com.nowgnodeel.gym.global.domain.Sex;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import com.nowgnodeel.gym.pt.domain.PT;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -29,4 +32,12 @@ public class Trainer extends BaseTimeEntity {
 
   @Column(nullable = false)
   private String address;
+
+  @ToString.Exclude
+  @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
+  private List<PT> pts = new ArrayList<>();
+
+  @ToString.Exclude
+  @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
+  private List<License> licenses = new ArrayList<>();
 }
