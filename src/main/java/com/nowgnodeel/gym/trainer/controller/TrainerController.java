@@ -24,6 +24,6 @@ public class TrainerController {
   @PostMapping
   public String createTrainer(TrainerDTO form) {
     trainerService.createTrainer(form);
-    return "admins/trainerManagement";
+    return "redirect:/trainers";
   }
 }

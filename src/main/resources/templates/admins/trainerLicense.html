@@ -20,6 +20,12 @@
         <th>종목</th>
         <th>유효기간</th>
       </tr>
+      <tr th:each="license : ${licenseLists}">
+        <td th:text="${license.licenseName}"></td>
+        <td th:text="${license.licenseGrade}"></td>
+        <td th:text="${license.licenseEvent}"></td>
+        <td th:text="${license.licenseCreateAt + '~' + license.licenseExpireAt}"></td>
+      </tr>
     </table>
   </div>
 </div>

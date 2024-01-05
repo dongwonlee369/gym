@@ -1,6 +1,7 @@
-package com.nowgnodeel.gym.trainer.domain;
+package com.nowgnodeel.gym.license.domain;
 
 import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
+import com.nowgnodeel.gym.trainer.domain.Trainer;
 import jakarta.persistence.*;
 
 import lombok.*;
