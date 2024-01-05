@@ -24,6 +24,7 @@ public class Trainer extends BaseTimeEntity {
   @Column(nullable = false)
   private String birth;
 
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private Sex sex;
 
@@ -39,5 +40,5 @@ public class Trainer extends BaseTimeEntity {
 
   @ToString.Exclude
   @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
-  private List<License> licenses = new ArrayList<>();
+  private List<com.nowgnodeel.gym.trainer.domain.License> licenses = new ArrayList<>();
 }

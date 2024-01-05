@@ -50,6 +50,10 @@ public class Member extends BaseTimeEntity {
 
   @ToString.Exclude
   @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+  private List<Enroll> enrolls = new ArrayList<>();
+
+  @ToString.Exclude
+  @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
   private List<PT> pts = new ArrayList<>();
 
   @ToString.Exclude
