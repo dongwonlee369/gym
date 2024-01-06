@@ -1,5 +1,6 @@
 package com.nowgnodeel.gym.license.service;
 
+import com.nowgnodeel.gym.license.common.LicenseDTO;
 import com.nowgnodeel.gym.license.domain.License;
 import com.nowgnodeel.gym.license.repository.LicenseRepository;
 import com.nowgnodeel.gym.trainer.domain.Trainer;
@@ -16,9 +17,20 @@ public class LicenseService {
   private final LicenseRepository licenseRepository;
   private final TrainerRepository trainerRepository;
 
+  /* 관리자 자격증 리스트 보기 */
   @Transactional
   public List<License> getLicenseList(Long id) {
     Trainer trainer = trainerRepository.findById(id).orElseThrow();
     return licenseRepository.findByTrainer(trainer);
+  }
+
+  /* 관리자 자격증 추가 하기 */
+  /* 수정 해야함.. */
+  @Transactional
+  public void createLicense(Long id, LicenseDTO form) {
+    Trainer trainer = trainerRepository.findById(id).orElseThrow();
+    License license = form.toEntity();
+    license.setTrainer(trainer);
+    licenseRepository.save(license);
   }
 }

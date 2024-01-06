@@ -8,8 +8,28 @@
 <body>
 <div>
   <div>
-    <h2>자격증 추가</h2>
+    <h1>자격증 관리</h1>
+    <div>
+      <h2>자격증 추가</h2>
+      <form th:action="@{/licenses}" method="post">
+        <label for="licenseName">자격증명</label><br>
+        <input type="text" id="licenseName" name="licenseName"><br>
 
+        <label for="licenseGrade">등급</label><br>
+        <input type="text" id="licenseGrade" name="licenseGrade"><br>
+
+        <label for="licenseEvent">종목</label><br>
+        <input type="text" id="licenseEvent" name="licenseEvent"><br>
+
+        <label for="licenseCreateAt">취득일</label><br>
+        <input type="tel" id="licenseCreateAt" name="licenseCreateAt"><br>
+
+        <label for="licenseExpireAt">만료일</label><br>
+        <input type="text" id="licenseExpireAt" name="licenseExpireAt"><br><br>
+
+        <button id="submit" type="submit">등록</button>
+      </form>
+    </div>
   </div>
   <div>
     <h2>자격증 목록</h2>
