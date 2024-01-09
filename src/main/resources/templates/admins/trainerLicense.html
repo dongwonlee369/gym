@@ -11,7 +11,7 @@
     <h1>자격증 관리</h1>
     <div>
       <h2>자격증 추가</h2>
-      <form th:action="@{/licenses}" method="post">
+      <form method="post">
         <label for="licenseName">자격증명</label><br>
         <input type="text" id="licenseName" name="licenseName"><br>
 
@@ -39,12 +39,17 @@
         <th>등급</th>
         <th>종목</th>
         <th>유효기간</th>
+        <th>비고</th>
       </tr>
       <tr th:each="license : ${licenseLists}">
         <td th:text="${license.licenseName}"></td>
         <td th:text="${license.licenseGrade}"></td>
         <td th:text="${license.licenseEvent}"></td>
         <td th:text="${license.licenseCreateAt + '~' + license.licenseExpireAt}"></td>
+        <td>
+          <button>수정</button>
+          <button>삭제</button>
+        </td>
       </tr>
     </table>
   </div>

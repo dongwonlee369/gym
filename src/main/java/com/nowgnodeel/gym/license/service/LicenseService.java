@@ -25,7 +25,6 @@ public class LicenseService {
   }
 
   /* 관리자 자격증 추가 하기 */
-  /* 수정 해야함.. */
   @Transactional
   public void createLicense(Long id, LicenseDTO form) {
     Trainer trainer = trainerRepository.findById(id).orElseThrow();

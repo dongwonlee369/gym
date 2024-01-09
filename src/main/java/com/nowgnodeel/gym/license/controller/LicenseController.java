@@ -19,10 +19,10 @@ public class LicenseController {
     return "admins/trainerLicense";
   }
 
-  /* 수정 해야함.. */
-  @PostMapping
-  public String createLicense(Long id, @RequestBody LicenseDTO form) {
+  @PostMapping()
+  public String createLicense(@RequestParam("trainerId") Long id, LicenseDTO form) {
     licenseService.createLicense(id, form);
     return "redirect:/licenses?trainerId=" + id;
+
   }
 }

@@ -53,7 +53,10 @@
         <td th:text="${trainer.address}"></td>
         <td><a th:text="상세" th:href="@{/licenses(trainerId=${trainer.id})}"></a></td>
         <td><button>보기</button></td>
-        <td><button>삭제</button></td>
+        <td>
+          <button>수정</button>
+          <button>삭제</button>
+        </td>
       </tr>
     </table>
   </div>
