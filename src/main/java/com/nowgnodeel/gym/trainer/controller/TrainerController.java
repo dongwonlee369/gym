@@ -5,9 +5,7 @@ import com.nowgnodeel.gym.trainer.service.TrainerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,6 +22,12 @@ public class TrainerController {
   @PostMapping
   public String createTrainer(TrainerDTO form) {
     trainerService.createTrainer(form);
+    return "redirect:/trainers";
+  }
+
+  @PostMapping("/remove")
+  public String removeTrainer(@RequestParam("trainerId") Long id) {
+    trainerService.removeTrainer(id);
     return "redirect:/trainers";
   }
 }

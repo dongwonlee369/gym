@@ -11,7 +11,8 @@
     <h1>자격증 관리</h1>
     <div>
       <h2>자격증 추가</h2>
-      <form method="post">
+      <form th:action="@{/licenses/create}" method="post">
+        <input type="hidden" name="trainerId" th:value="${trainerId}">
         <label for="licenseName">자격증명</label><br>
         <input type="text" id="licenseName" name="licenseName"><br>
 
@@ -48,7 +49,7 @@
           <td th:text="${license.licenseEvent}"></td>
           <td th:text="${license.licenseCreateDate + '~' + license.licenseExpireDate}"></td>
           <td>
-            <form action="/licenses/remove" method="post">
+            <form th:action="@{/licenses/remove}" th:method="post">
               <input type="hidden" name="licenseId" th:value="${license.id}">
               <input type="hidden" name="trainerId" th:value="${trainerId}">
               <button type="submit">삭제</button>

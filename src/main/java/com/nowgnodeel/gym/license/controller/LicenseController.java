@@ -15,11 +15,12 @@ public class LicenseController {
 
   @GetMapping()
   public String getLicenseList(@RequestParam("trainerId") Long id, Model model) {
+    model.addAttribute("trainerId", id);
     model.addAttribute("licenseLists", licenseService.getLicenseList(id));
     return "admins/trainerLicense";
   }
 
-  @PostMapping()
+  @PostMapping("/create")
   public String createLicense(@RequestParam("trainerId") Long id, LicenseDTO form) {
     licenseService.createLicense(id, form);
     return "redirect:/licenses?trainerId=" + id;
@@ -30,5 +31,4 @@ public class LicenseController {
     licenseService.removeLicense(licenseId);
     return "redirect:/licenses?trainerId=" + trainerId;
   }
-
 }

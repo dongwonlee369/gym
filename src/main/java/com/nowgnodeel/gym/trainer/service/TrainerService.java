@@ -26,4 +26,10 @@ public class TrainerService {
   public void createTrainer(TrainerDTO form) {
     trainerRepository.save(form.toEntity());
   }
+
+  /* 트레이너 삭제 하기 */
+  @Transactional
+  public void removeTrainer(Long id) {
+    trainerRepository.deleteById(id);
+  }
 }
