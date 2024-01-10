@@ -5,8 +5,8 @@ import com.nowgnodeel.gym.license.domain.License;
 public record LicenseDTO(
     String licenseName,
     String licenseGrade,
-    String licenseCreateAt,
-    String licenseExpireAt,
+    String licenseCreateDate,
+    String licenseExpireDate,
     String licenseEvent
 ) {
   public License toEntity() {
@@ -14,8 +14,8 @@ public record LicenseDTO(
         .licenseName(licenseName)
         .licenseGrade(licenseGrade)
         .licenseEvent(licenseEvent)
-        .licenseCreateAt(licenseCreateAt)
-        .licenseExpireAt(licenseExpireAt)
+        .licenseCreateDate(licenseCreateDate)
+        .licenseExpireDate(licenseExpireDate)
         .build();
   }
 }

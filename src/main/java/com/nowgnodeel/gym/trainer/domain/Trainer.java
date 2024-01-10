@@ -40,6 +40,6 @@ public class Trainer extends BaseTimeEntity {
   private List<PT> pts = new ArrayList<>();
 
   @ToString.Exclude
-  @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
   private List<License> licenses = new ArrayList<>();
 }

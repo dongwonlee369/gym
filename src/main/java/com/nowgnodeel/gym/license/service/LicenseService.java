@@ -32,4 +32,10 @@ public class LicenseService {
     license.setTrainer(trainer);
     licenseRepository.save(license);
   }
+
+  /* 관리자 자격증 삭제 하기 */
+  @Transactional
+  public void removeLicense(Long licenseId) {
+    licenseRepository.deleteById(licenseId);
+  }
 }

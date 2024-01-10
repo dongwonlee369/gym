@@ -21,37 +21,42 @@
         <label for="licenseEvent">종목</label><br>
         <input type="text" id="licenseEvent" name="licenseEvent"><br>
 
-        <label for="licenseCreateAt">취득일</label><br>
-        <input type="tel" id="licenseCreateAt" name="licenseCreateAt"><br>
+        <label for="licenseCreateDate">취득일</label><br>
+        <input type="tel" id="licenseCreateDate" name="licenseCreateDate"><br>
 
-        <label for="licenseExpireAt">만료일</label><br>
-        <input type="text" id="licenseExpireAt" name="licenseExpireAt"><br><br>
+        <label for="licenseExpireDate">만료일</label><br>
+        <input type="text" id="licenseExpireDate" name="licenseExpireDate"><br><br>
 
         <button id="submit" type="submit">등록</button>
       </form>
     </div>
   </div>
   <div>
-    <h2>자격증 목록</h2>
-    <table>
-      <tr>
-        <th>자격증명</th>
-        <th>등급</th>
-        <th>종목</th>
-        <th>유효기간</th>
-        <th>비고</th>
-      </tr>
-      <tr th:each="license : ${licenseLists}">
-        <td th:text="${license.licenseName}"></td>
-        <td th:text="${license.licenseGrade}"></td>
-        <td th:text="${license.licenseEvent}"></td>
-        <td th:text="${license.licenseCreateAt + '~' + license.licenseExpireAt}"></td>
-        <td>
-          <button>수정</button>
-          <button>삭제</button>
-        </td>
-      </tr>
-    </table>
+    <form method="post">
+      <h2>자격증 목록</h2>
+      <table>
+        <tr>
+          <th>자격증명</th>
+          <th>등급</th>
+          <th>종목</th>
+          <th>유효기간</th>
+          <th>비고</th>
+        </tr>
+        <tr th:each="license : ${licenseLists}">
+          <td th:text="${license.licenseName}"></td>
+          <td th:text="${license.licenseGrade}"></td>
+          <td th:text="${license.licenseEvent}"></td>
+          <td th:text="${license.licenseCreateDate + '~' + license.licenseExpireDate}"></td>
+          <td>
+            <form action="/licenses/remove" method="post">
+              <input type="hidden" name="licenseId" th:value="${license.id}">
+              <input type="hidden" name="trainerId" th:value="${trainerId}">
+              <button type="submit">삭제</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </form>
   </div>
 </div>
 </body>

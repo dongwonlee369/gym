@@ -23,6 +23,12 @@ public class LicenseController {
   public String createLicense(@RequestParam("trainerId") Long id, LicenseDTO form) {
     licenseService.createLicense(id, form);
     return "redirect:/licenses?trainerId=" + id;
-
   }
+
+  @PostMapping("/remove")
+  public String removeLicense(@RequestParam("licenseId") Long licenseId, @RequestParam("trainerId") Long trainerId) {
+    licenseService.removeLicense(licenseId);
+    return "redirect:/licenses?trainerId=" + trainerId;
+  }
+
 }

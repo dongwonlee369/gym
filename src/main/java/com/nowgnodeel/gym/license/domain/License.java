@@ -25,10 +25,10 @@ public class License extends BaseTimeEntity {
   private String licenseEvent;
 
   @Column(nullable = false)
-  private String licenseCreateAt;
+  private String licenseCreateDate;
 
   @Column(nullable = false)
-  private String licenseExpireAt;
+  private String licenseExpireDate;
 
   @ToString.Exclude
   @ManyToOne(fetch = FetchType.LAZY)
