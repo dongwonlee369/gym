@@ -6,6 +6,64 @@
   <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 <body>
+<div>
+  <h1>PT 관리</h1>
+  <div>
+    <h2>PT 추가</h2>
+    <form th:action="@{/pts}" method="post">
+      <label for="trainerId">트레이너명</label>
+      <select id="trainerId" name="trainerId">
+        <option th:each="trainer : ${trainerLists}" th:value="${trainer.id}" th:text="${trainer.nickname}"></option>
+      </select>
 
+      <label for="memberId">회원명</label>
+      <select id="memberId" name="memberId">
+        <option th:each="member : ${memberLists}" th:value="${member.id}" th:text="${member.nickname}"></option>
+      </select><br>
+
+      <label for="cost">금액</label><br>
+      <input type="text" id="cost" name="cost"><br>
+
+      <label for="count">횟수</label><br>
+      <input type="text" id="count" name="count"><br>
+
+      <label for="paymentType">결제수단</label><br>
+      <select id="paymentType" name="paymentType">
+        <option value="CREDIT_CARD">카드</option>
+        <option value="CASH">현금</option>
+      </select><br><br>
+
+      <button id="submit" type="submit">등록</button>
+    </form>
+  </div>
+</div>
+<div>
+  <h2>PT 목록</h2>
+  <table>
+    <tr>
+      <th>트레이너명</th>
+      <th>회원명</th>
+      <th>금액</th>
+      <th>횟수</th>
+      <th>결제수단</th>
+      <th>총결제금액</th>
+      <th>비고</th>
+    </tr>
+    <tr th:each="pt : ${PtLists}">
+      <td th:text="${pt.trainer.nickname}"></td>
+      <td th:text="${pt.member.nickname}"></td>
+      <td th:text="${pt.cost}"></td>
+      <td th:text="${pt.count}"></td>
+      <td th:text="${pt.paymentType}"></td>
+      <td th:text="${pt.totalCost}"></td>
+      <td>
+        <form th:action="@{/pts/remove}" th:method="post">
+          <input type="hidden" name="ptId" th:value="${pt.id}">
+          <button type="submit">삭제</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
 </body>
 </html>
