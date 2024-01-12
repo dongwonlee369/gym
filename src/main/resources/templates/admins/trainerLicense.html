@@ -33,31 +33,29 @@
     </div>
   </div>
   <div>
-    <form method="post">
-      <h2>자격증 목록</h2>
-      <table>
-        <tr>
-          <th>자격증명</th>
-          <th>등급</th>
-          <th>종목</th>
-          <th>유효기간</th>
-          <th>비고</th>
-        </tr>
-        <tr th:each="license : ${licenseLists}">
-          <td th:text="${license.licenseName}"></td>
-          <td th:text="${license.licenseGrade}"></td>
-          <td th:text="${license.licenseEvent}"></td>
-          <td th:text="${license.licenseCreateDate + '~' + license.licenseExpireDate}"></td>
-          <td>
-            <form th:action="@{/licenses/remove}" th:method="post">
-              <input type="hidden" name="licenseId" th:value="${license.id}">
-              <input type="hidden" name="trainerId" th:value="${trainerId}">
-              <button type="submit">삭제</button>
-            </form>
-          </td>
-        </tr>
-      </table>
-    </form>
+    <h2>자격증 목록</h2>
+    <table>
+      <tr>
+        <th>자격증명</th>
+        <th>등급</th>
+        <th>종목</th>
+        <th>유효기간</th>
+        <th>비고</th>
+      </tr>
+      <tr th:each="license : ${licenseLists}">
+        <td th:text="${license.licenseName}"></td>
+        <td th:text="${license.licenseGrade}"></td>
+        <td th:text="${license.licenseEvent}"></td>
+        <td th:text="${license.licenseCreateDate + '~' + license.licenseExpireDate}"></td>
+        <td>
+          <form th:action="@{/licenses/remove}" th:method="post">
+            <input type="hidden" name="licenseId" th:value="${license.id}">
+            <input type="hidden" name="trainerId" th:value="${trainerId}">
+            <button type="submit">삭제</button>
+          </form>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
 </body>

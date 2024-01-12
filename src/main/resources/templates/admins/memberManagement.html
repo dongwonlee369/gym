@@ -6,6 +6,62 @@
   <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 <body>
+<div>
+  <h1>회원 관리</h1>
+  <div>
+    <h2>회원 추가</h2>
+    <form th:action="@{/members}" method="post">
+      <label for="nickname">이름</label><br>
+      <input type="text" id="nickname" name="nickname"><br>
 
+      <label for="birth">생년월일</label><br>
+      <input type="text" id="birth" name="birth"><br>
+
+      <label for="sex">성별</label><br>
+      <select id="sex" name="sex">
+        <option value="MALE">남자</option>
+        <option value="FEMALE">여자</option>
+      </select><br>
+
+      <label for="phone">연락처</label><br>
+      <input type="tel" id="phone" name="phone"><br>
+
+      <label for="address">주소</label><br>
+      <input type="text" id="address" name="address"><br><br>
+
+      <button id="submit" type="submit">등록</button>
+    </form>
+  </div>
+</div>
+<div>
+  <h2>트레이너 목록</h2>
+  <table>
+    <tr>
+      <th>이름</th>
+      <th>생년월일</th>
+      <th>성별</th>
+      <th>연락처</th>
+      <th>주소</th>
+      <th>비고</th>
+    </tr>
+    <tr th:each="member : ${memberLists}">
+      <td th:text="${member.nickname}"></td>
+      <td th:text="${member.birth}"></td>
+      <td th:text="${member.sex}"></td>
+      <td th:text="${member.phone}"></td>
+      <td th:text="${member.address}"></td>
+      <td>
+        <form th:action="@{/members/update}" th:method="post">
+          <input type="hidden" name="memberId" th:value="${member.id}">
+          <button type="submit">수정</button>
+        </form>
+        <form th:action="@{/members/remove}" th:method="post">
+          <input type="hidden" name="memberId" th:value="${member.id}">
+          <button type="submit">삭제</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
 </body>
 </html>

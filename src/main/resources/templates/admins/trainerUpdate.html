@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Gold's Gym</title>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div>
+  <h1>트레이너 수정</h1>
+  <div>
+    <form th:action="@{/trainers/update}" method="post">
+      <label for="nickname">이름</label><br>
+      <input type="text" id="nickname" name="nickname"><br>
+
+      <label for="birth">생년월일</label><br>
+      <input type="text" id="birth" name="birth"><br>
+
+      <label for="sex">성별</label><br>
+      <select id="sex" name="sex">
+        <option value="MALE">남자</option>
+        <option value="FEMALE">여자</option>
+      </select><br>
+
+      <label for="phone">연락처</label><br>
+      <input type="tel" id="phone" name="phone"><br>
+
+      <label for="address">주소</label><br>
+      <input type="text" id="address" name="address"><br><br>
+
+      <button id="submit" type="submit">수정</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

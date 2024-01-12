@@ -4,7 +4,7 @@ import com.nowgnodeel.gym.cart.domain.Cart;
 import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
 import com.nowgnodeel.gym.global.domain.Sex;
 import com.nowgnodeel.gym.order.domain.Order;
-import com.nowgnodeel.gym.pt.domain.PT;
+import com.nowgnodeel.gym.pt.domain.Pt;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,11 +23,11 @@ import java.util.List;
 @ToString
 public class Member extends BaseTimeEntity {
 
-  @Column(nullable = false, unique = true)
+  /*@Column(nullable = false, unique = true)
   private String username;
 
   @Column(nullable = false)
-  private String password;
+  private String password;*/
 
   @Column(nullable = false)
   private String nickname;
@@ -57,7 +57,7 @@ public class Member extends BaseTimeEntity {
 
   @ToString.Exclude
   @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-  private List<PT> pts = new ArrayList<>();
+  private List<Pt> pts = new ArrayList<>();
 
   @ToString.Exclude
   @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)

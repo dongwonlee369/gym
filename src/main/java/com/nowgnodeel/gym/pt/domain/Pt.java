@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PT extends BaseTimeEntity {
+public class Pt extends BaseTimeEntity {
 
   @Column(nullable = false)
   private String cost;

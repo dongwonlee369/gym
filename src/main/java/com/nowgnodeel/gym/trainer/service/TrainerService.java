@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -31,5 +32,19 @@ public class TrainerService {
   @Transactional
   public void removeTrainer(Long id) {
     trainerRepository.deleteById(id);
+  }
+
+  /* 트레이너 수정 하기 */
+  /* 미완성 */
+  @Transactional
+  public void updateTrainer(Long trainerId, TrainerDTO dto) {
+    Optional<Trainer> optionalTrainer = trainerRepository.findById(trainerId);
+    if (optionalTrainer.isEmpty()) return;
+    Trainer trainer = optionalTrainer.get();
+    trainer.setNickname(dto.nickname());
+    trainer.setBirth(dto.birth());
+    trainer.setSex(dto.sex());
+    trainer.setPhone(dto.phone());
+    trainer.setAddress(dto.address());
   }
 }

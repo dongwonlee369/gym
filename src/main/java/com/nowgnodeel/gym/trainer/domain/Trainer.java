@@ -3,7 +3,7 @@ package com.nowgnodeel.gym.trainer.domain;
 import com.nowgnodeel.gym.global.domain.BaseTimeEntity;
 import com.nowgnodeel.gym.global.domain.Sex;
 import com.nowgnodeel.gym.license.domain.License;
-import com.nowgnodeel.gym.pt.domain.PT;
+import com.nowgnodeel.gym.pt.domain.Pt;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,7 +37,7 @@ public class Trainer extends BaseTimeEntity {
 
   @ToString.Exclude
   @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
-  private List<PT> pts = new ArrayList<>();
+  private List<Pt> pts = new ArrayList<>();
 
   @ToString.Exclude
   @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)

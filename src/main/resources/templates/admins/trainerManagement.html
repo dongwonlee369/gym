@@ -43,7 +43,6 @@
       <th>연락처</th>
       <th>주소</th>
       <th>자격증</th>
-      <th>PT</th>
       <th>비고</th>
     </tr>
     <tr th:each="trainer : ${trainerLists}">
@@ -53,9 +52,11 @@
       <td th:text="${trainer.phone}"></td>
       <td th:text="${trainer.address}"></td>
       <td><a th:text="상세" th:href="@{/licenses(trainerId=${trainer.id})}"></a></td>
-      <td><button>보기</button></td>
       <td>
-        <button>수정</button>
+        <form th:action="@{/trainers/update}" th:method="post">
+          <input type="hidden" name="trainerId" th:value="${trainer.id}">
+          <button type="submit">수정</button>
+        </form>
         <form th:action="@{/trainers/remove}" th:method="post">
           <input type="hidden" name="trainerId" th:value="${trainer.id}">
           <button type="submit">삭제</button>
