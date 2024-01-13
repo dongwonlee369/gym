@@ -23,7 +23,9 @@ public class PtController {
   /* PT 리스트 보기 */
   @GetMapping("")
   public String getPtList(Model model) {
-    model.addAttribute("PtLists", ptService.getPtList());
+/*
+    model.addAttribute("ptLists", ptService.getPtList());
+*/
     model.addAttribute("trainerLists", trainerService.getTrainerList());
     model.addAttribute("memberLists", memberService.getMemberList());
     return "admins/ptManagement";

@@ -22,9 +22,6 @@ public class Pt extends BaseTimeEntity {
   @Column(nullable = false)
   private String count;
 
-  /*@Column(nullable = false)
-  private String totalCost;*/
-
   @Column(nullable = false)
   private PaymentType paymentType;
 
