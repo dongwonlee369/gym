@@ -24,6 +24,7 @@ public class PtController {
   @GetMapping("")
   public String getPtList(Model model) {
 /*
+    이거 주석 처리 하니까 오류 없이 동작은 하는데 DB에 만 값이 입력되고 뷰에서는 값이 출력이 안됨.
     model.addAttribute("ptLists", ptService.getPtList());
 */
     model.addAttribute("trainerLists", trainerService.getTrainerList());
