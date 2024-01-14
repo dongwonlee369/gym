@@ -13,12 +13,12 @@
     <form th:action="@{/pts}" method="post">
       <label for="trainerId">트레이너명</label>
       <select id="trainerId" name="trainerId">
-        <option th:each="trainer : ${trainerLists}" th:value="${trainer.id}" th:text="${trainer.nickname}"></option>
+        <option th:each="trainer : ${trainerLists}" th:value="${trainer.id}" th:text="${trainer.id}"></option>
       </select>
 
       <label for="memberId">회원명</label>
       <select id="memberId" name="memberId">
-        <option th:each="member : ${memberLists}" th:value="${member.id}" th:text="${member.nickname}"></option>
+        <option th:each="member : ${memberLists}" th:value="${member.id}" th:text="${member.id}"></option>
       </select><br>
 
       <label for="cost">금액</label><br>
@@ -46,7 +46,6 @@
       <th>금액</th>
       <th>횟수</th>
       <th>결제수단</th>
-      <th>총결제금액</th>
       <th>비고</th>
     </tr>
     <tr th:each="pt : ${ptLists}">
@@ -55,7 +54,6 @@
       <td th:text="${pt.cost}"></td>
       <td th:text="${pt.count}"></td>
       <td th:text="${pt.paymentType}"></td>
-      <td th:text="${pt.totalCost}"></td>
       <td>
         <form th:action="@{/pts/remove}" th:method="post">
           <input type="hidden" name="ptId" th:value="${pt.id}">
