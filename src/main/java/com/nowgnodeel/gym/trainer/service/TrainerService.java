@@ -25,26 +25,16 @@ public class TrainerService {
   /* 관리자 트레이너 추가 하기 */
   @Transactional
   public void createTrainer(TrainerDTO form) {
-    trainerRepository.save(form.toEntity());
+    if (trainerRepository.findByNickname(form.nickname()) != null) {
+      throw new IllegalStateException("이미 있는 트레이너입니다.");
+    } else {
+      trainerRepository.save(form.toEntity());
+    }
   }
 
   /* 트레이너 삭제 하기 */
   @Transactional
   public void removeTrainer(Long id) {
     trainerRepository.deleteById(id);
-  }
-
-  /* 트레이너 수정 하기 */
-  /* 미완성 */
-  @Transactional
-  public void updateTrainer(Long trainerId, TrainerDTO dto) {
-    Optional<Trainer> optionalTrainer = trainerRepository.findById(trainerId);
-    if (optionalTrainer.isEmpty()) return;
-    Trainer trainer = optionalTrainer.get();
-    trainer.setNickname(dto.nickname());
-    trainer.setBirth(dto.birth());
-    trainer.setSex(dto.sex());
-    trainer.setPhone(dto.phone());
-    trainer.setAddress(dto.address());
   }
 }

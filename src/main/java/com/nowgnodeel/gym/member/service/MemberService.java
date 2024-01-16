@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,11 +22,28 @@ public class MemberService {
 
   @Transactional
   public void createMember(MemberDTO dto) {
-    memberRepository.save(dto.toEntity());
+    if (memberRepository.findByNickname(dto.nickname()) != null) {
+      throw new IllegalStateException("이미 있는 회원입니다.");
+    } else {
+      memberRepository.save(dto.toEntity());
+    }
   }
 
   @Transactional
   public void removeMember(Long id) {
     memberRepository.deleteById(id);
+  }
+
+  @Transactional
+  public void updateMember(Long id, MemberDTO dto) {
+    Optional<Member> optionalMember = memberRepository.findById(id);
+    if (optionalMember.isEmpty()) return;
+    Member member = optionalMember.get();
+    member.setNickname(dto.nickname());
+    member.setBirth(dto.birth());
+    member.setSex(dto.sex());
+    member.setPhone(dto.phone());
+    member.setAddress(dto.address());
+    memberRepository.save(member);
   }
 }

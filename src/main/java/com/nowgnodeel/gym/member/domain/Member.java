@@ -44,9 +44,6 @@ public class Member extends BaseTimeEntity {
   @Column(nullable = false)
   private String address;
 
-  @Column(nullable = false)
-  private boolean isAdmin;
-
   @ToString.Exclude
   @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
   private List<MemberCreditCard> memberCreditCards = new ArrayList<>();

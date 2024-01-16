@@ -23,18 +23,15 @@ public class PtController {
   /* PT 리스트 보기 */
   @GetMapping("")
   public String getPtList(Model model) {
-/*
-    이거 주석 처리 하니까 오류 없이 동작은 하는데 DB에 만 값이 입력되고 뷰에서는 값이 출력이 안됨.
     model.addAttribute("ptLists", ptService.getPtList());
-*/
     model.addAttribute("trainerLists", trainerService.getTrainerList());
     model.addAttribute("memberLists", memberService.getMemberList());
     return "admins/ptManagement";
   }
-  /* 생성 부분 수정 필요 */
+
   @PostMapping
-  public String createPt(PtDTO dto) {
-    ptService.createPt(dto);
+  public String createPt(PtDTO dto, @RequestParam("trainerId") Long trainerId, @RequestParam("memberId") Long memberId) {
+    ptService.createPt(dto, trainerId, memberId);
     return "redirect:/pts";
   }
 

@@ -31,10 +31,4 @@ public class TrainerController {
     return "redirect:/trainers";
   }
 
-  /* 미완성 */
-  @PostMapping("/update")
-  public String updateTrainer(TrainerDTO dto, @RequestParam("trainerId") Long trainerId) {
-    trainerService.updateTrainer(trainerId, dto);
-    return "admins/trainerUpdate";
-  }
 }

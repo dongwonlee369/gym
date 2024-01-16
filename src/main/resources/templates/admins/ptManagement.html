@@ -3,9 +3,20 @@
 <head>
   <title>Gold's Gym</title>
   <meta charset="UTF-8"/>
-  <link rel="stylesheet" th:href="@{/css/home.css}">
+  <link rel="stylesheet" th:href="@{/css/ptManagement.css}">
 </head>
 <body>
+<header class="header">
+  <div>
+    <h1>Gym Management System</h1>
+    <p>
+      <a href="/">홈으로</a>
+      <a href="/trainers">트레이너 관리</a>
+      <a href="/members">회원 관리</a>
+      <a href="/pts">PT 관리</a>
+    </p>
+  </div>
+</header>
 <div>
   <h1>PT 관리</h1>
   <div>
@@ -13,12 +24,12 @@
     <form th:action="@{/pts}" method="post">
       <label for="trainerId">트레이너명</label>
       <select id="trainerId" name="trainerId">
-        <option th:each="trainer : ${trainerLists}" th:value="${trainer.id}" th:text="${trainer.id}"></option>
+        <option th:each="trainer : ${trainerLists}" th:value="${trainer.id}" th:text="${trainer.nickname}"></option>
       </select>
 
       <label for="memberId">회원명</label>
       <select id="memberId" name="memberId">
-        <option th:each="member : ${memberLists}" th:value="${member.id}" th:text="${member.id}"></option>
+        <option th:each="member : ${memberLists}" th:value="${member.id}" th:text="${member.nickname}"></option>
       </select><br>
 
       <label for="cost">금액</label><br>
